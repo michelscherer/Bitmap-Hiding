@@ -10,7 +10,13 @@ public class Hider {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 int coverPixel = cover.getRGB(x, y);
+                if (x == 0 && y == 0) {
+                    System.out.println("coverPixel: " + Integer.toBinaryString(coverPixel));
+                }
                 int hiddenPixel = hidden.getRGB(x, y);
+                if (x == 0 && y == 0) {
+                    System.out.println("hiddenPixel: " + Integer.toBinaryString(hiddenPixel));
+                }
 
                 int rCover = (coverPixel >> 16) & 0xFF;
                 int gCover = (coverPixel >> 8) & 0xFF;
@@ -26,6 +32,9 @@ public class Hider {
 
                 int mergedPixel = (rCover << 16) | (gCover << 8) | bCover;
                 result.setRGB(x, y, mergedPixel);
+                if (x == 0 && y == 0) {
+                    System.out.println("mergedPixel: " + Integer.toBinaryString(mergedPixel));
+                }
             }
         }
         return result;
