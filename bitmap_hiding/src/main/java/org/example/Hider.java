@@ -13,7 +13,13 @@ public class Hider {
             for (int x = 0; x < width; x++) {
                 // RGB Werte des aktuellen Pixels
                 int coverPixel = cover.getRGB(x, y);
+                if (x == 0 && y == 0) {
+                    System.out.println("coverPixel: " + Integer.toBinaryString(coverPixel));
+                }
                 int hiddenPixel = hidden.getRGB(x, y);
+                if (x == 0 && y == 0) {
+                    System.out.println("hiddenPixel: " + Integer.toBinaryString(hiddenPixel));
+                }
 
                 // [ 31 - 24 ] [ 23 - 16 ] [ 15 - 8 ] [ 7 - 0 ]
                 // |    A     |     R     |     G    |    B    |
@@ -37,6 +43,9 @@ public class Hider {
                 // Pixel wird zusammengesetzt
                 int mergedPixel = (rCover << 16) | (gCover << 8) | bCover;
                 result.setRGB(x, y, mergedPixel);
+                if (x == 0 && y == 0) {
+                    System.out.println("mergedPixel: " + Integer.toBinaryString(mergedPixel));
+                }
             }
         }
         return result;
